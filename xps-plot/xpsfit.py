@@ -74,6 +74,8 @@ def full_xps_fit(file, sheet, name=False, skip=7, b=False, c=False, residuals=Fa
     # Load initial data
     data = read_xps_data_from_excel(file, sheet_name=sheet, skiprows=skip)
     pathfolder = os.path.dirname(file)
+    if not os.path.exists(f'{pathfolder}/xpsfit'):
+        os.makedirs(f'{pathfolder}/xpsfit')
     fitoutput, model, parameters = xps_fit(data, [120.0, 123, 124.0], [1, 0.1, 0.25])
 
     # Standardize all data such that the first peak occurs at 130 eV
@@ -146,6 +148,8 @@ def one_component_xps_fit(file, sheet, name=False, skip=7, residuals=False):
     # Load initial data
     data = read_xps_data_from_excel(file, sheet_name=sheet, skiprows=skip)
     pathfolder = os.path.dirname(file)
+    if not os.path.exists(f'{pathfolder}/xpsfit'):
+        os.makedirs(f'{pathfolder}/xpsfit')
     fitoutput, model, parameters = xps_fit(data, [120.0], [1])
 
     # Standardize all data such that the first peak occurs at 130 eV
@@ -207,6 +211,8 @@ def two_component_xps_fit(file, sheet, name=False, skip=7, residuals=False, skip
     # Load initial data
     data = read_xps_data_from_excel(file, sheet_name=sheet, skiprows=skip)
     pathfolder = os.path.dirname(file)
+    if not os.path.exists(f'{pathfolder}/xpsfit'):
+        os.makedirs(f'{pathfolder}/xpsfit')
     fitoutput, model, parameters = xps_fit(data, [120.0, 123.0], [1, 0.1])
 
     # Standardize all data such that the first peak occurs at 130 eV
