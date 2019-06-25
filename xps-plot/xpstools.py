@@ -201,7 +201,7 @@ def plot_xps_fit(fit, showallcomponents=False, ax=None):
     components = fit.eval_components(x=x)
 
     #colors = ['grey', 'blue', 'fuchsia', 'k']
-    pkcolors = ['grey', 'grey', 'fuchsia', 'fuchsia', 'blue', 'blue']
+    pkcolors = ['grey', 'grey', 'fuchsia', 'fuchsia', 'blue', 'blue', 'seagreen', 'seagreen', '#ceb301', '#ceb301']
 
     uniqueprefixes = sorted(list(set([s[:-2] for s in components.keys()])))
     colorcount = 0
@@ -222,6 +222,6 @@ def plot_xps_fit(fit, showallcomponents=False, ax=None):
     #plt.legend()
     ax.set_xlim(126, 137)
     ax.set_xlabel('Binding Energy (eV)')
-    ax.invert_xaxis()
+    #ax.invert_xaxis()
     ax.set_ylabel('Intensity (a.u.)')
     #plt.show()
