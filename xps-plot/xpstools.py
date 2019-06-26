@@ -4,7 +4,7 @@ tools.py
 
 Functions for fitting XPS P 2p spectrum outputs from the UW MAF SSI S-Probe.
 
-Primarily written by W.H., with modifications by C.C.
+Originally written by W.H., with slight to significant modifications by C.C.
 """
 
 # Imports

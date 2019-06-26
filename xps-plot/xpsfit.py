@@ -11,13 +11,8 @@ are required.  Working to remove this requirement in future versions.
 
 # Imports
 import os
-import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-
-from lmfit import models
-from operator import add
-from functools import reduce
 
 from xpstools import read_xps_data_from_excel, take_energy_range, \
                     get_background_subtracted_data, doublet_peakshape_model, \
@@ -36,7 +31,7 @@ def calculate_component_percentages(fit):
         intensities[p] = np.sum(components[p+'1_'] + components[p+'2_'])
     total = np.sum(list(intensities.values()))
     for k, v in intensities.items():
-        intensities[k] = v / total
+        intensities[k] = f"{(v / total) * 100:0.2f}%"
     return intensities
 
 def calculate_p_deltas(fit):
@@ -47,9 +42,7 @@ def calculate_p_deltas(fit):
     alphabet = 'abcdefghijklmnopqrstuvwxyz'
     pks = int(len(fit.params) / 12)
     for i in range(pks)[1:]:
-        pdict[f'a{alphabet[i]}_dist'] = abs(
-            fit.params[f'a1_center'].value - fit.params[f'{alphabet[i]}1_center'].value
-        )
+        pdict[f'a{alphabet[i]}_dist'] = f"{abs(fit.params[f'a1_center'].value - fit.params[f'{alphabet[i]}1_center'].value):0.2f} eV"
     return pdict
 
 def full_xps_fit(file, sheet, peaks=3, name=False, skip=7, b=False, c=False, residuals=False):
