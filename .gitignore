@@ -3,7 +3,11 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Mac
 .DS_Store
+
+# Hide xrd-plot from public eyes :P
+xrd-plot/
 
 # Jupyter Notebook
 .ipynb_checkpoints
